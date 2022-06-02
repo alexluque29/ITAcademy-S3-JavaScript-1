@@ -1,4 +1,4 @@
-# Sprint 3 IT Academy | Shop
+# Sprint-3 IT Academy | Shop
 
 ## Introduction
 
