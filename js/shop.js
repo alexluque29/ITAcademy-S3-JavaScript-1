@@ -1,4 +1,6 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
+"use strict";
+
 var products = [
    {
         id: 1,
@@ -82,12 +84,15 @@ function buy(id) {
       cartList.push(products[i]);
       contador = cartList.length;
       document.getElementById("count_product").innerHTML = contador;
+      console.log (cartList);
     }
-  }
+}
 }
 // Exercise 2
 function cleanCart() {
-
+  cartList = [];
+  document.getElementById("count_product").innerHTML = 0;
+  console.log(cartList);
 }
 
 // Exercise 3
