@@ -77,27 +77,28 @@ var total = 0;
 function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
-
   let contador, i;
   for (i = 0; i < products.length; i++) {
-    if (products[i].id == id) {
-      cartList.push(products[i]);
-      contador = cartList.length;
-      document.getElementById("count_product").innerHTML = contador;
-      console.log (cartList);
+        if (products[i].id == id) {
+        cartList.push(products[i]);
+        contador = cartList.length;
+        document.getElementById("count_product").innerHTML = contador;
+        }
     }
-}
 }
 // Exercise 2
 function cleanCart() {
   cartList = [];
   document.getElementById("count_product").innerHTML = 0;
-  console.log(cartList);
 }
 
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    let i, total = 0;
+    for (i=0; i<cartList.length; i++){
+        total += cartList[i].price;
+    }
 }
 
 // Exercise 4
