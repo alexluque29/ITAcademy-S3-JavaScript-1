@@ -29,7 +29,10 @@
 						 <li class="dropdown search-dropdown nav-item py-lg-3">						 
 							 <a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
 								<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill" id="count_product">0</span>
-							 </a>
+							</a>
+							<!-- botones prueba suma productos y genera Cart-->
+							<button type="button" onclick="calculateTotal()" class="btn btn-outline-dark">Suma</button>
+							<button type="button" onclick="generateCart()" class="btn btn-outline-dark">Genera</button>
 						 </li>
 					 </ul>
 				 </div>
@@ -39,8 +42,6 @@
 					 <ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5">
 						 <li class="nav-item">
 						  <a class="nav-link" href="#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a>
-						  <!-- boton prueba suma productos -->
-						  <button type="button" onclick="calculateTotal()" class="btn btn-outline-dark">Suma</button>
 						</li>
 						<li class="nav-item">
 						  <a class="nav-link" href="#beauty"><i class="fas fa-heart"></i> Beauty</a>
