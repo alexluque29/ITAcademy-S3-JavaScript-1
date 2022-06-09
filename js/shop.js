@@ -85,11 +85,15 @@ function buy(id) {
         document.getElementById("count_product").innerHTML = contador;
         }
     }
+    console.log()
 }
 // Exercise 2
 function cleanCart() {
-  cartList = [];
-  document.getElementById("count_product").innerHTML = 0;
+    document.getElementById("count_product").innerHTML = 0;
+    document.getElementById("total_price").innerHTML = 0;
+    document.getElementById("cart_list").innerHTML = "";
+    cartList=[];
+    cart=[];
 }
 
 // Exercise 3
@@ -99,7 +103,7 @@ function calculateTotal() {
     for (i=0; i<cartList.length; i++){
         total += cartList[i].price;
     }
-    console.log(total);
+    return total;
 }
 
 // Exercise 4
@@ -124,21 +128,24 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-    console.log(cart);
-    let i, checkItem, priceDis;
+    let i, checkItem, descuento;
     for (i=0; i<cart.length; i++){
         checkItem = cart[i];
         if (checkItem.id == 1 && checkItem.quantity >= 3){
-            priceDis = checkItem.price = 10;
-            checkItem.subtotalWithDiscount = (checkItem.quantity * priceDis).toFixed(2);
-        } else{
+            checkItem.price = 10;
+            checkItem.subtotalWithDiscount = (checkItem.quantity * checkItem.price).toFixed(2);
+        } else if (checkItem.id == 1 && checkItem.quantity < 3){
+            checkItem.price = 10.5;
+            checkItem.subtotalWithDiscount = (checkItem.quantity * checkItem.price).toFixed(2);
+        }        
+        if (checkItem.id == 3 && checkItem.quantity >= 10){
+            checkItem.price = 3.33;
+            checkItem.subtotalWithDiscount = (checkItem.quantity * checkItem.price).toFixed(2);
+        } else if (checkItem.id == 3 && checkItem.quantity < 10){
+            checkItem.price = 5;
             checkItem.subtotalWithDiscount = (checkItem.quantity * checkItem.price).toFixed(2);
         }
-        
-        if (checkItem.id == 3 && checkItem.quantity >= 10){
-            priceDis = checkItem.price = 3.33;
-            checkItem.subtotalWithDiscount = (checkItem.quantity * priceDis).toFixed(2);
-        } else{
+        if (checkItem.id != 1 || checkItem.id !=3){
             checkItem.subtotalWithDiscount = (checkItem.quantity * checkItem.price).toFixed(2);
         }
     }
@@ -147,6 +154,22 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    
+    document.getElementById("cart_list").innerHTML="";
+    generateCart();
+    applyPromotionsCart();
+    let total = calculateTotal();
+
+    for (let items of cart) {
+        document.getElementById("cart_list").innerHTML +=`
+        <tr>
+        <th scope="row">${items.name}</th>
+        <td>${items.price}</td>
+        <td>${items.quantity}</td>
+        <td>$${items.subtotalWithDiscount}</td>
+        </tr>`
+    }    
+    document.getElementById("total_price").innerHTML = total.toFixed(2);        
 }
 
 
@@ -168,4 +191,5 @@ function removeFromCart(id) {
 function open_modal(){
 	console.log("Open Modal");
 	printCart();
+    console.log(cart);
 }
